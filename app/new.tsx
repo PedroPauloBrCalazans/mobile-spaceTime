@@ -54,7 +54,11 @@ export default function NewMemory() {
         type: "image/jpeg",
       } as any);
 
-      const uploadResponse = await api.post("upload", uploadFormData);
+      const uploadResponse = await api.post("upload", uploadFormData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       coverUrl = uploadResponse.data.fileUrl;
     }
